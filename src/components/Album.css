@@ -1,0 +1,69 @@
+
+.album {
+	overflow: hidden;
+	white-space: nowrap;
+
+}
+#album-cover-art {
+	max-width: 70%;
+	max-height: auto;
+	padding: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+
+#song-list {
+	padding: 6px;
+	margin: 10px;
+}
+
+
+.songs-container {
+	display: inline-block;
+	width: 95%;
+	margin: auto;
+}
+
+.text-div {
+	margin: auto;
+}
+.song-title {
+	width: 65%;
+
+}
+
+.song-duration {
+	text-align: right;
+	width: 10%;
+
+}
+
+.player-footer {
+	background-color: #192f53;
+	opacity: 0.9;
+	font-family: 'Khand', sans-serif;
+}
+.player-bar {
+	width: 100%;
+}
+
+#album-title {
+	color: white;
+	font-size: 44px;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+.artist {
+	color: white;
+	font-size: 34px;
+	font-family: 'Pragati Narrow', sans-serif;
+}
+
+#release-info {
+	color: white;
+	font-size: 22px;
+	font-family: 'Pragati Narrow', sans-serif;
+}

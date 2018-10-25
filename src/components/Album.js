@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import './Album.css';
 
 class Album extends Component {
 	constructor(props) {
@@ -105,57 +106,76 @@ class Album extends Component {
 
 	render() {
 		return (
-		  <section className="album">
-		   <section id="album-info">
-           <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-           <div className="album-details">
-             <h1 id="album-title">{this.state.album.title}</h1>
-             <h2 className="artist">{this.state.album.artist}</h2>
-             <div id="release-info">{this.state.album.releaseInfo}</div>
-           </div>
-		   </section>
-		   <table id="song-list">
-		     <colgroup>
-		     	<col id="song-number-column" />
-		     	<col id="song-title-column" />
-		     	<col id="song-duration-column" />
-		     </colgroup>
-		     <tbody>
-		     	{this.state.album.songs.map((song, index) => {
-		       	return (
-		       		<tr className="song" key={index} onClick={() => this.handleSongClick(song)} 
-		       		onMouseEnter={() => this.setState({ isHovered: index+1 })} 
-		       		onMouseLeave={() => this.setState({ isHovered: false })} >
-		       			<td>
-		       			{ (this.state.currentSong.title === song.title && this.state.isPlaying) 
-                        ? <span className={this.state.isPlaying ? "ion-md-pause" : "ion-md-play"}></span>
-                        : ((this.state.isHovered === index+1) 
-                        	? <span className="ion-md-play"></span> 
-                        	: <span className="song-number">{index+1}</span>
-                        	)
-                      	}
-		       			</td>
-		       			<td>{song.title}</td>
-		       			<td>{this.formatTime(song.duration)}</td>
-		       		</tr>
-		       	  )}
-		       	)}
-		     </tbody>
-		   </table>
-		   <PlayerBar 
-		   	isPlaying={this.state.isPlaying} 
-		   	currentSong={this.state.currentSong}
-		   	currentTime={this.state.currentTime}
-		   	duration={this.audioElement.duration}
-		   	volume={this.state.volume}
-		   	handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-		   	handlePrevClick={() => this.handlePrevClick()} 
-		   	handleNextClick={() => this.handleNextClick()}
-		   	handleTimeChange={(e) => this.handleTimeChange(e)} 
-		   	handleVolumeChange={(e) => this.handleVolumeChange(e)}
-		   	formatTime={(e) => this.formatTime(e)}
-		   	/>
-		  </section>
+		<div className="album-layout">
+			<div className="container-fluid py-5 album-container">
+				<div className="row justify-content-center">
+					<div className="col-sm-6">
+						<img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
+					</div>
+
+					<div className="col-sm-6 text-div">
+						<section className="album">
+					   <section id="album-info">
+			           <div className="album-details ">
+			             <h1 id="album-title">{this.state.album.title}</h1> 
+			             <h2 className="artist">{this.state.album.artist}</h2> 
+			             <div id="release-info">{this.state.album.releaseInfo}</div>
+			           </div>
+					   </section>
+					   <div className="songs-container d-flex">
+					   	<table id="song-list" className="table">
+						     <colgroup>
+						     	<col id="song-number-column" />
+						     	<col id="song-title-column" />
+						     	<col id="song-duration-column" className="justify-content-end" />
+						     </colgroup>
+						     <tbody>
+						     	{this.state.album.songs.map((song, index) => {
+						       	return (
+						       		<tr className="row song" key={index} onClick={() => this.handleSongClick(song)} 
+						       		onMouseEnter={() => this.setState({ isHovered: index+1 })} 
+						       		onMouseLeave={() => this.setState({ isHovered: false })} >
+						       			<td className="song-number-col">
+						       			{ (this.state.currentSong.title === song.title && this.state.isPlaying) 
+				                        ? <span className={this.state.isPlaying ? "ion-md-pause" : "ion-md-play"}></span>
+				                        : ((this.state.isHovered === index+1) 
+				                        	? <span className="ion-md-play"></span> 
+				                        	: <span className="song-number">{index+1}</span>
+				                        	)
+				                      	}
+						       			</td>
+						       			<td className="song-title">{song.title}</td>
+						       			<td className="song-duration">{this.formatTime(song.duration)}</td>
+						       		</tr>
+						       	  )}
+						       	)}
+						     </tbody>
+						   </table>
+					   </div>
+					   </section>
+					</div>
+					
+				</div>
+		   	</div>
+		   
+		   <footer className="player-footer text-light container-fluid d-flex justify-content-center">
+			   <div className="py-4 player-bar">
+			   	<PlayerBar 
+				   	isPlaying={this.state.isPlaying} 
+				   	currentSong={this.state.currentSong}
+				   	currentTime={this.state.currentTime}
+				   	duration={this.audioElement.duration}
+				   	volume={this.state.volume}
+				   	handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+				   	handlePrevClick={() => this.handlePrevClick()} 
+				   	handleNextClick={() => this.handleNextClick()}
+				   	handleTimeChange={(e) => this.handleTimeChange(e)} 
+				   	handleVolumeChange={(e) => this.handleVolumeChange(e)}
+				   	formatTime={(e) => this.formatTime(e)}
+				   	/>
+			   </div>	
+		   </footer>
+		  </div>
 		);
 	}
 }

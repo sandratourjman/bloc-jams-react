@@ -1,0 +1,55 @@
+#time-control input[type=range] {
+  /*-webkit-appearance: none;*/
+  margin: 14px 0;
+  width: 70%;
+}
+
+button {
+  background: transparent;
+  color: #fff;
+  border: none;
+
+}
+
+button:focus {
+  outline: none;
+}
+
+.buttons {
+	position: absolute;
+}
+
+.player-controls .ion-md-play, 
+.player-controls .ion-md-pause, 
+.player-controls .ion-md-skip-forward,
+ .player-controls .ion-md-skip-backward{
+	font-size: 1.5rem;
+	padding: .4rem;
+	display: inline-block;
+	overflow-wrap: normal;
+
+}
+
+.player {
+	min-height: 15vh;
+}
+
+.current-time {
+	display: inline-block;
+	padding-right: 0.75rem;
+}
+
+.total-time {
+	display: inline-block;
+	padding-left: 0.75rem;
+}
+
+.vol-low {
+	display: inline-block;
+	padding-right: 0.75rem;
+}
+
+.vol-high {
+	display: inline-block;
+	padding-left: 0.75rem;
+}

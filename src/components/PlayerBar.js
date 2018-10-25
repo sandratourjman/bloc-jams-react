@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import './PlayerBar.css';
  
 class PlayerBar extends Component {
 	render() {
 	 return (
+    <div className="player ">
 	   <section className="player-bar">
-	     <section id="buttons">
+      <div className="row justify-content-center align-items-center">
+      <div className="col-sm-2 player-controls text-center">
+      <section id="buttons">
            <button id="previous" onClick={this.props.handlePrevClick}>
              <span className="ion-md-skip-backward"></span>
            </button>
@@ -15,7 +19,9 @@ class PlayerBar extends Component {
              <span className="ion-md-skip-forward"></span>
            </button>
          </section>
-         <section id="time-control">
+      </div>
+         <section className="col-sm-5 text-center" id="time-control">
+           
            <div className="current-time">{this.props.formatTime(this.props.currentTime)}</div>
            <input 
              type="range" 
@@ -28,8 +34,8 @@ class PlayerBar extends Component {
              />
            <div className="total-time">{this.props.formatTime(this.props.duration)}</div>
          </section>
-         <section id="volume-control">
-           <div className="icon ion-md-volume-low"></div>
+         <section className="col-sm-3 text-center" id="volume-control">
+           <div className="icon ion-md-volume-low vol-low"></div>
            <input 
              type="range" 
              className="seek-bar" 
@@ -40,9 +46,11 @@ class PlayerBar extends Component {
              onChange={this.props.handleVolumeChange}
 
              />
-           <div className="icon ion-md-volume-high"></div>
+           <div className="icon ion-md-volume-high vol-high"></div>
          </section>
+         </div>
 	   </section>
+     </div>
 	 );
 	}
 }
